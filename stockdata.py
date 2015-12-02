@@ -22,7 +22,7 @@ class Stock:
         """
         self.symbol = symbol
 
-    def get_all_data(self, interval=60, period="1d"):
+    def get_data(self, interval=60, period="1d"):
         """
         Returns a Data object that contains the:
         date, close, high, low, open, and volume for the current stock
