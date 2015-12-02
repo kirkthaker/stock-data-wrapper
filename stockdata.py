@@ -1,7 +1,16 @@
 import urllib
 from collections import namedtuple
+from enum import Enum
 
 Data = namedtuple("Data", "dates closes highs lows opens volumes")
+
+class Column(Enum):
+    date = 0
+    close = 1
+    high = 2
+    low = 3
+    open_price = 4
+    volume = 5
 
 class Stock:
 
@@ -13,7 +22,7 @@ class Stock:
         """
         self.symbol = symbol
 
-    def get_all_data(self, interval, period):
+    def get_all_data(self, interval=60, period="1d"):
         """
         Returns a Data object that contains the:
         date, close, high, low, open, and volume for the current stock
@@ -40,14 +49,15 @@ class Stock:
         # only need data from the 7th row onwards
         split_data = raw_data.split()[8:]
 
+        # get the data from each respective column and add to array
         for row in split_data:
             row = row.split(",")
-            dates.append(int(row[0]))
-            close_prices.append(float(row[1]))
-            high_prices.append(float(row[2]))
-            low_prices.append(float(row[3]))
-            open_prices.append(float(row[4]))
-            volumes.append(int(row[5]))
+            dates.append(int(row[Column.date.value]))
+            close_prices.append(float(row[Column.close.value]))
+            high_prices.append(float(row[Column.high.value]))
+            low_prices.append(float(row[Column.low.value]))
+            open_prices.append(float(row[Column.open_price.value]))
+            volumes.append(int(row[Column.volume.value]))
 
         return Data(
             dates = dates,
