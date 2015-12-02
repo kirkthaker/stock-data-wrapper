@@ -3,7 +3,7 @@ from collections import namedtuple
 
 Data = namedtuple("Data", "dates closes highs lows opens volumes")
 
-class StockData:
+class Stock:
 
     BASE_URL = "http://www.google.com/finance/getprices?"
 
