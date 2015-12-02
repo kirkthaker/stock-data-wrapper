@@ -52,7 +52,7 @@ class Stock:
         # get the data from each respective column and add to array
         for row in split_data:
             row = row.split(",")
-            dates.append(int(row[Column.date.value]))
+            dates.append(row[Column.date.value])
             close_prices.append(float(row[Column.close.value]))
             high_prices.append(float(row[Column.high.value]))
             low_prices.append(float(row[Column.low.value]))
