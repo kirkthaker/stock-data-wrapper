@@ -17,6 +17,7 @@ sec = Stock("GOOG")
 ```
 
 The important function is get_data, which takes the following parameters:
+
 1. Interval - how many seconds in between data points. Default is 60.
 2. Period - the overall time period for which you want data. Default is 1 day.
 
